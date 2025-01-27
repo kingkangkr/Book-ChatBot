@@ -6,3 +6,5 @@
 3. korean_data.ipynb: 한국어 책 요약본 다운로드
 4. korean_data.py: 한국어 책 요약본을 데이터셋으로 구현
 5. test.py: 책 추천 기능
+
+6. book_recommendation_app.py: 책 요약 서비스 streamlit 구현
