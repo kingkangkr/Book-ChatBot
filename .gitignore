@@ -1,4 +1,6 @@
-config.py
-/.venv
-/__pycache__
+.env
+/.venv/
+/__pycache__/
 /data
+*.pyc
+download/
