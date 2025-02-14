@@ -18,7 +18,7 @@ client = OpenAI(
 # Load dataset
 @st.cache_data
 def load_data():
-    dt = pd.read_csv('data/booksummaries_embeddings_0_12839.csv')
+    dt = pd.read_csv('data/filtered_booksummaries.csv') #임베딩 데이터
     dt['Summarized Plot Embedding'] = dt['Summarized Plot Embedding'].apply(ast.literal_eval)
     return dt
 
@@ -53,10 +53,20 @@ def generate_explanations(recommendations, book_title):
     with concurrent.futures.ThreadPoolExecutor() as executor:
         futures = []
         for title, _ in recommendations:
+            # 추천된 책의 줄거리 가져오기
+            book_data = dt[dt['Book title'] == title].iloc[0]
+            summarized_plot = book_data['Summarized Plot Summary']
             prompt = (
-                f"책 '{title}'는 '{book_title}'과 유사한 줄거리를 가지고 있습니다."
-                f"두 책이 어떤 점에서 비슷한지 간단히 설명해 주세요."
-            )
+            f"책 제목: {title}\n"
+            f"추천 이유: '{book_title}'과 유사한 줄거리를 가지고 있습니다. "
+            f"두 책이 어떤 점에서 비슷한지 간단히 설명해 주세요.\n\n"
+            f" **주의사항:**\n"
+            f"- **결말, 반전, 주요 사건의 결과**를 절대 언급하지 마세요.\n"
+            f"- 오직 책의 **설정, 등장인물의 특징, 분위기, 주제**만 설명하세요.\n"
+            f"- 독자가 직접 책을 읽고 경험할 수 있도록 궁금증을 유발하는 방식으로 서술하세요.\n\n"
+            f"'{book_title}' 요약: {dt[dt['Book title'] == book_title].iloc[0]['Summarized Plot Summary']}\n"
+            f"'{title}' 요약: {summarized_plot}\n\n"
+        )
             futures.append(executor.submit(chatgpt_generate, prompt))
         for future in concurrent.futures.as_completed(futures):
             explanations.append(future.result())
