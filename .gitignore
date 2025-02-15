@@ -3,4 +3,7 @@
 /__pycache__/
 /data
 *.pyc
-download/
+data_collecting/download/
+data_collecting/books.csv/
+books.csv
+mycode/
