@@ -1,3 +1,19 @@
-
-myenv/
+# 환경 변수 파일
 .env
+
+# 가상 환경 폴더
+.venv/
+myenv/
+
+# Python 컴파일된 파일 및 캐시
+__pycache__/
+*.pyc
+
+# 데이터 관련 폴더 및 파일
+/data/
+data_collecting/download/
+data_collecting/books.csv
+books.csv
+
+# 개인 코드 폴더
+mycode/
