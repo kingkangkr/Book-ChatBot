@@ -72,3 +72,6 @@ OPENAI_API_KEY=your-api-key-here
 ```
 ## 결과
 ![Image](https://github.com/user-attachments/assets/e29346d3-c651-4ba1-9f6b-3f791db8e282)
+
+## 발표 자료
+[발표 자료 다운로드](https://github.com/lissani/Book-GPT/blob/main/%EC%B1%85-%EC%A7%80%ED%94%BC%ED%8B%B0.pptx)
