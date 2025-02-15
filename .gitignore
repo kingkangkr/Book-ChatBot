@@ -3,6 +3,7 @@
 
 # 가상 환경 폴더
 .venv/
+myenv/
 
 # Python 컴파일된 파일 및 캐시
 __pycache__/
